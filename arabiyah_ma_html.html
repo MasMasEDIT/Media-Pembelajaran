@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arabiyah MA - Media Pembelajaran Bahasa Arab</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ecfdf5, #ffffff, #fffbeb);
+      color: #0f172a;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid #d1fae5;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 52px;
+      height: 52px;
+      background: #047857;
+      color: white;
+      border-radius: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      box-shadow: 0 10px 20px rgba(4, 120, 87, 0.18);
+    }
+
+    .brand h1 {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .brand p {
+      font-size: 14px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      border: 1px solid #d1fae5;
+      background: white;
+      color: #0f172a;
+      padding: 10px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: #047857;
+      color: white;
+      border-color: #047857;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 32px 16px;
+    }
+
+    .screen {
+      display: none;
+      animation: fadeUp 0.35s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 24px;
+    }
+
+    .hero {
+      background: #065f46;
+      color: white;
+      padding: 44px;
+      border-radius: 32px;
+      box-shadow: 0 18px 40px rgba(4, 120, 87, 0.18);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ecfdf5;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero h2 {
+      font-size: 44px;
+      line-height: 1.15;
+      max-width: 760px;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      color: #d1fae5;
+      line-height: 1.8;
+      font-size: 17px;
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: none;
+      padding: 13px 18px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .primary-btn {
+      background: #fbbf24;
+      color: #0f172a;
+    }
+
+    .secondary-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .stat-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stat-card,
+    .card {
+      background: white;
+      border: 1px solid #d1fae5;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+    }
+
+    .stat-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stat-card small {
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 42px;
+      color: #065f46;
+    }
+
+    .stat-card span {
+      background: #ecfdf5;
+      color: #047857;
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 14px;
+      font-size: 13px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: 0.35fr 0.65fr;
+      gap: 24px;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .lesson-btn {
+      width: 100%;
+      text-align: left;
+      border: 1px solid #d1fae5;
+      background: white;
+      padding: 20px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .lesson-btn:hover,
+    .lesson-btn.active {
+      background: #047857;
+      color: white;
+      border-color: #047857;
+      box-shadow: 0 12px 26px rgba(4, 120, 87, 0.18);
+    }
+
+    .lesson-level {
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0.75;
+    }
+
+    .lesson-arabic {
+      margin-top: 8px;
+      font-size: 28px;
+      font-weight: 900;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .lesson-subtitle {
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .lesson-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .lesson-meta {
+      font-size: 13px;
+      color: #047857;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .lesson-title-arabic {
+      margin-top: 10px;
+      font-size: 44px;
+      font-weight: 900;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .lesson-title-id {
+      margin-top: 4px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    .audio-btn {
+      border: none;
+      background: #047857;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .objective-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .objective-card {
+      background: #ecfdf5;
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .objective-card strong {
+      color: #047857;
+      font-size: 14px;
+    }
+
+    .objective-card p {
+      margin-top: 8px;
+      color: #475569;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .example-box,
+    .task-box,
+    .rubric-box,
+    .result-note {
+      margin-top: 24px;
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .example-box {
+      background: #f8fafc;
+    }
+
+    .task-box {
+      background: #ecfdf5;
+      border: 1px dashed #6ee7b7;
+    }
+
+    .rubric-box {
+      background: #0f172a;
+      color: white;
+    }
+
+    .arabic-text {
+      direction: rtl;
+      text-align: right;
+      font-size: 30px;
+      line-height: 1.8;
+      font-weight: 900;
+    }
+
+    .translation {
+      margin-top: 10px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .search-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .search-input {
+      width: 360px;
+      max-width: 100%;
+      border: 1px solid #d1fae5;
+      padding: 13px 16px;
+      border-radius: 16px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .vocab-card {
+      background: white;
+      border: 1px solid #d1fae5;
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+    }
+
+    .vocab-topic {
+      color: #047857;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .vocab-arabic {
+      direction: rtl;
+      text-align: right;
+      font-size: 40px;
+      font-weight: 900;
+      margin-top: 12px;
+    }
+
+    .vocab-latin {
+      color: #64748b;
+      margin-top: 8px;
+    }
+
+    .vocab-meaning {
+      margin-top: 12px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .small-audio {
+      margin-top: 14px;
+      border: 1px solid #d1fae5;
+      background: white;
+      color: #047857;
+      padding: 9px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: 0.55fr 0.45fr;
+      gap: 24px;
+    }
+
+    .practice-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .practice-item {
+      background: #f8fafc;
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .practice-item strong {
+      color: #047857;
+      font-size: 14px;
+    }
+
+    .practice-item p {
+      margin-top: 8px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .quiz-card {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .quiz-count {
+      color: #047857;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .score-badge {
+      background: #ecfdf5;
+      color: #047857;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+    }
+
+    .progress {
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #047857;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+
+    .question-box {
+      background: #f8fafc;
+      border-radius: 22px;
+      padding: 22px;
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.6;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .option-btn {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 18px;
+      padding: 15px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .option-btn:hover {
+      background: #ecfdf5;
+      border-color: #6ee7b7;
+    }
+
+    .option-btn.correct {
+      background: #ecfdf5;
+      border-color: #059669;
+      color: #065f46;
+    }
+
+    .option-btn.wrong {
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #b91c1c;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 20px;
+      background: #fffbeb;
+      padding: 18px;
+      border-radius: 22px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .feedback.show {
+      display: flex;
+    }
+
+    .next-btn,
+    .reset-btn {
+      border: none;
+      background: #047857;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .result-screen {
+      display: none;
+      text-align: center;
+    }
+
+    .result-icon {
+      margin: auto;
+      width: 84px;
+      height: 84px;
+      background: #fef3c7;
+      color: #b45309;
+      border-radius: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 42px;
+    }
+
+    .final-score {
+      margin-top: 22px;
+      font-size: 66px;
+      font-weight: 900;
+      color: #065f46;
+    }
+
+    .result-note {
+      background: #f8fafc;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      line-height: 1.8;
+      color: #475569;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .lesson-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .objective-grid,
+      .vocab-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .objective-grid,
+      .vocab-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+      }
+
+      .lesson-title-arabic {
+        font-size: 34px;
+      }
+
+      .arabic-text {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">ع</div>
+        <div>
+          <h1>Arabiyah MA</h1>
+          <p>Media Pembelajaran Bahasa Arab Madrasah Aliyah</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-btn active" onclick="showScreen('home', this)">Beranda</button>
+        <button class="nav-btn" onclick="showScreen('materi', this)">Materi</button>
+        <button class="nav-btn" onclick="showScreen('mufradat', this)">Mufradat</button>
+        <button class="nav-btn" onclick="showScreen('latihan', this)">Latihan</button>
+        <button class="nav-btn" onclick="showScreen('kuis', this)">Kuis</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="hero-grid">
+        <div class="hero">
+          <div class="badge">Untuk kelas X, XI, dan XII Madrasah Aliyah</div>
+          <h2>Belajar Bahasa Arab lebih aktif, kontekstual, dan terukur.</h2>
+          <p>
+            Aplikasi ini dirancang sebagai media pembelajaran berbasis digital yang memadukan materi,
+            mufradat, contoh kalimat, latihan berbicara, dan kuis evaluatif untuk mendukung pembelajaran
+            Bahasa Arab di Madrasah Aliyah.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" onclick="goToScreen('materi')">Mulai Belajar</button>
+            <button class="secondary-btn" onclick="goToScreen('kuis')">Coba Kuis</button>
+          </div>
+        </div>
+
+        <div class="stat-list">
+          <div class="stat-card">
+            <div>
+              <small>Paket Materi</small>
+              <strong>3</strong>
+            </div>
+            <span>Topik inti MA</span>
+          </div>
+          <div class="stat-card">
+            <div>
+              <small>Mufradat</small>
+              <strong>18</strong>
+            </div>
+            <span>Kosakata dasar</span>
+          </div>
+          <div class="stat-card">
+            <div>
+              <small>Soal Kuis</small>
+              <strong>6</strong>
+            </div>
+            <span>Evaluasi cepat</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="materi" class="screen">
+      <div class="lesson-grid">
+        <div>
+          <h2 class="section-title">Daftar Materi</h2>
+          <p class="section-subtitle">Pilih salah satu materi pembelajaran.</p>
+          <div id="lessonList" class="lesson-list"></div>
+        </div>
+
+        <div class="card" id="lessonDetail"></div>
+      </div>
+    </section>
+
+    <section id="mufradat" class="screen">
+      <div class="search-row">
+        <div>
+          <h2 class="section-title">Bank Mufradat</h2>
+          <p class="section-subtitle">Cari kosakata berdasarkan Arab, latin, arti, atau topik materi.</p>
+        </div>
+        <input id="searchInput" class="search-input" type="text" placeholder="Cari mufradat..." oninput="renderVocab()" />
+      </div>
+      <div id="vocabGrid" class="vocab-grid"></div>
+    </section>
+
+    <section id="latihan" class="screen">
+      <div class="practice-grid">
+        <div class="card">
+          <h2 class="section-title">Latihan Menulis</h2>
+          <p class="section-subtitle">
+            Gunakan contoh berikut sebagai model. Siswa dapat menulis ulang, mengganti nama,
+            mengganti asal daerah, atau menambahkan keterangan kelas.
+          </p>
+
+          <div class="example-box">
+            <p class="arabic-text">اِسْمِي فَاطِمَةُ. أَنَا طَالِبَةٌ فِي الصَّفِّ الْعَاشِرِ. أَنَا مِنْ إِنْدُونِيسِيَا.</p>
+            <p class="translation">Nama saya Fatimah. Saya siswi kelas sepuluh. Saya dari Indonesia.</p>
+          </div>
+
+          <div class="task-box">
+            <strong>Tugas Siswa</strong>
+            <p class="translation">Buat 5 kalimat Bahasa Arab tentang identitas diri dan kegiatan harian.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Latihan Berbicara</h2>
+          <p class="section-subtitle">Pilih satu instruksi, lalu praktikkan secara lisan di depan kelas.</p>
+          <div id="speakingTasks" class="practice-list"></div>
+
+          <div class="rubric-box">
+            <strong>Rubrik Singkat</strong>
+            <p style="margin-top: 12px; line-height: 1.8; color: #e2e8f0;">
+              • Ketepatan mufradat dan struktur kalimat<br />
+              • Kelancaran pengucapan<br />
+              • Keberanian dan kejelasan suara
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kuis" class="screen">
+      <div class="card quiz-card">
+        <div id="quizContent">
+          <div class="quiz-top">
+            <div>
+              <p id="quizCount" class="quiz-count"></p>
+              <h2 class="section-title" style="margin-bottom: 0;">Kuis Pemahaman</h2>
+            </div>
+            <div id="scoreBadge" class="score-badge">Skor: 0</div>
+          </div>
+
+          <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+
+          <div id="questionBox" class="question-box"></div>
+          <div id="options" class="options"></div>
+
+          <div id="feedback" class="feedback">
+            <p id="feedbackText"></p>
+            <button class="next-btn" onclick="nextQuestion()">Soal Berikutnya</button>
+          </div>
+        </div>
+
+        <div id="resultScreen" class="result-screen">
+          <div class="result-icon">🏆</div>
+          <h2 class="section-title" style="margin-top: 22px;">Hasil Kuis</h2>
+          <p id="resultSummary" class="section-subtitle" style="margin-bottom: 0;"></p>
+          <div id="finalScore" class="final-score">0</div>
+          <p style="font-weight: 800; color: #475569;">Nilai Akhir</p>
+          <div class="result-note">
+            <strong style="color: #0f172a;">Rekomendasi Belajar</strong>
+            <p id="recommendation" style="margin-top: 8px;"></p>
+          </div>
+          <button class="reset-btn" onclick="resetQuiz()">Ulangi Kuis</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const lessons = [
+      {
+        id: 1,
+        title: "التعارف",
+        subtitle: "Perkenalan Diri",
+        level: "Kelas X",
+        theme: "Komunikasi dasar",
+        description: "Siswa mempelajari ungkapan perkenalan, identitas diri, asal, dan sapaan sederhana dalam Bahasa Arab.",
+        objectives: [
+          "Menyebutkan nama, asal, dan kelas dalam Bahasa Arab.",
+          "Menggunakan sapaan formal dan nonformal secara tepat.",
+          "Menyusun dialog pendek tentang perkenalan diri."
+        ],
+        vocab: [
+          { arabic: "اِسْمِي", latin: "ismii", meaning: "nama saya" },
+          { arabic: "أَنَا مِنْ", latin: "anaa min", meaning: "saya dari" },
+          { arabic: "طَالِبٌ", latin: "thaalibun", meaning: "siswa laki-laki" },
+          { arabic: "طَالِبَةٌ", latin: "thaalibatun", meaning: "siswa perempuan" },
+          { arabic: "مَدْرَسَةٌ", latin: "madrasatun", meaning: "sekolah" },
+          { arabic: "صَدِيقٌ", latin: "shadiiqun", meaning: "teman" }
+        ],
+        example: "السَّلَامُ عَلَيْكُمْ، اِسْمِي أَحْمَدُ. أَنَا طَالِبٌ فِي الْمَدْرَسَةِ الْعَالِيَةِ.",
+        translation: "Assalamu’alaikum, nama saya Ahmad. Saya adalah siswa di Madrasah Aliyah."
+      },
+      {
+        id: 2,
+        title: "الحياة اليومية",
+        subtitle: "Kegiatan Sehari-hari",
+        level: "Kelas XI",
+        theme: "Rutinitas dan waktu",
+        description: "Siswa memahami kosakata kegiatan harian, waktu, dan susunan kalimat sederhana untuk menjelaskan rutinitas.",
+        objectives: [
+          "Mengidentifikasi mufradat kegiatan sehari-hari.",
+          "Menjelaskan rutinitas menggunakan fi'il mudhari'.",
+          "Membuat paragraf pendek tentang aktivitas harian."
+        ],
+        vocab: [
+          { arabic: "أَسْتَيْقِظُ", latin: "astaiqizhu", meaning: "saya bangun" },
+          { arabic: "أَذْهَبُ", latin: "adzhabu", meaning: "saya pergi" },
+          { arabic: "أَدْرُسُ", latin: "adrusu", meaning: "saya belajar" },
+          { arabic: "أَرْجِعُ", latin: "arji'u", meaning: "saya pulang" },
+          { arabic: "صَبَاحًا", latin: "shabaahan", meaning: "pagi hari" },
+          { arabic: "مَسَاءً", latin: "masaa'an", meaning: "sore/malam hari" }
+        ],
+        example: "أَسْتَيْقِظُ صَبَاحًا، ثُمَّ أَذْهَبُ إِلَى الْمَدْرَسَةِ.",
+        translation: "Saya bangun pagi, kemudian pergi ke sekolah."
+      },
+      {
+        id: 3,
+        title: "الهوايات",
+        subtitle: "Hobi dan Minat",
+        level: "Kelas XII",
+        theme: "Ekspresi minat",
+        description: "Siswa mempelajari cara menyatakan hobi, minat, alasan, dan pendapat sederhana dalam Bahasa Arab.",
+        objectives: [
+          "Menyebutkan jenis hobi dalam Bahasa Arab.",
+          "Menggunakan ungkapan suka dan tidak suka.",
+          "Menyampaikan alasan sederhana atas pilihan hobi."
+        ],
+        vocab: [
+          { arabic: "هِوَايَةٌ", latin: "hiwaayatun", meaning: "hobi" },
+          { arabic: "أُحِبُّ", latin: "uhibbu", meaning: "saya suka" },
+          { arabic: "الْقِرَاءَةُ", latin: "al-qiraa'ah", meaning: "membaca" },
+          { arabic: "الرِّيَاضَةُ", latin: "ar-riyaadhah", meaning: "olahraga" },
+          { arabic: "الرَّسْمُ", latin: "ar-rasmu", meaning: "menggambar" },
+          { arabic: "مُفِيدٌ", latin: "mufiidun", meaning: "bermanfaat" }
+        ],
+        example: "أُحِبُّ الْقِرَاءَةَ لِأَنَّهَا مُفِيدَةٌ.",
+        translation: "Saya suka membaca karena membaca itu bermanfaat."
+      }
+    ];
+
+    const quizBank = [
+      {
+        question: "Arti kata اِسْمِي adalah ...",
+        options: ["nama saya", "rumah saya", "sekolah saya", "teman saya"],
+        answer: "nama saya"
+      },
+      {
+        question: "Kalimat أَنَا مِنْ berarti ...",
+        options: ["saya pergi", "saya dari", "saya belajar", "saya suka"],
+        answer: "saya dari"
+      },
+      {
+        question: "أَدْرُسُ memiliki arti ...",
+        options: ["saya makan", "saya membaca", "saya belajar", "saya pulang"],
+        answer: "saya belajar"
+      },
+      {
+        question: "Kata yang berarti pagi hari adalah ...",
+        options: ["مَسَاءً", "صَبَاحًا", "طَالِبٌ", "هِوَايَةٌ"],
+        answer: "صَبَاحًا"
+      },
+      {
+        question: "أُحِبُّ الْقِرَاءَةَ berarti ...",
+        options: ["saya suka membaca", "saya suka olahraga", "saya pergi sekolah", "saya bangun pagi"],
+        answer: "saya suka membaca"
+      },
+      {
+        question: "هِوَايَةٌ berarti ...",
+        options: ["kegiatan", "hobi", "kelas", "teman"],
+        answer: "hobi"
+      }
+    ];
+
+    const speakingTasks = [
+      "Perkenalkan diri Anda dalam 3 kalimat Bahasa Arab.",
+      "Ceritakan kegiatan pagi Anda menggunakan minimal 4 mufradat.",
+      "Sebutkan satu hobi dan alasan mengapa Anda menyukainya."
+    ];
+
+    let activeLessonId = 1;
+    let quizIndex = 0;
+    let selectedAnswer = null;
+    let score = 0;
+    let answered = false;
+
+    function showScreen(screenId, buttonElement) {
+      document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+      document.getElementById(screenId).classList.add("active");
+
+      document.querySelectorAll(".nav-btn").forEach(button => button.classList.remove("active"));
+      if (buttonElement) buttonElement.classList.add("active");
+    }
+
+    function goToScreen(screenId) {
+      const buttons = document.querySelectorAll(".nav-btn");
+      buttons.forEach(button => {
+        if (button.textContent.toLowerCase().includes(screenId)) {
+          showScreen(screenId, button);
+        }
+      });
+    }
+
+    function pronounce(text) {
+      if (!window.speechSynthesis) {
+        alert("Browser Anda belum mendukung fitur suara.");
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "ar-SA";
+      utterance.rate = 0.8;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function renderLessons() {
+      const lessonList = document.getElementById("lessonList");
+      lessonList.innerHTML = lessons.map(lesson => `
+        <button class="lesson-btn ${lesson.id === activeLessonId ? "active" : ""}" onclick="selectLesson(${lesson.id})">
+          <p class="lesson-level">${lesson.level}</p>
+          <p class="lesson-arabic">${lesson.title}</p>
+          <p class="lesson-subtitle">${lesson.subtitle}</p>
+        </button>
+      `).join("");
+
+      renderLessonDetail();
+    }
+
+    function selectLesson(id) {
+      activeLessonId = id;
+      renderLessons();
+    }
+
+    function renderLessonDetail() {
+      const lesson = lessons.find(item => item.id === activeLessonId);
+      const detail = document.getElementById("lessonDetail");
+
+      detail.innerHTML = `
+        <div class="lesson-header">
+          <div>
+            <p class="lesson-meta">${lesson.level} • ${lesson.theme}</p>
+            <h2 class="lesson-title-arabic">${lesson.title}</h2>
+            <p class="lesson-title-id">${lesson.subtitle}</p>
+          </div>
+          <button class="audio-btn" onclick='pronounce(${JSON.stringify(lesson.example)})'>Dengarkan Contoh</button>
+        </div>
+
+        <p class="section-subtitle" style="margin-top: 22px; margin-bottom: 0;">${lesson.description}</p>
+
+        <div class="objective-grid">
+          ${lesson.objectives.map((objective, index) => `
+            <div class="objective-card">
+              <strong>Tujuan ${index + 1}</strong>
+              <p>${objective}</p>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="example-box">
+          <strong style="color: #64748b;">Contoh Kalimat</strong>
+          <p class="arabic-text">${lesson.example}</p>
+          <p class="translation">${lesson.translation}</p>
+        </div>
+      `;
+    }
+
+    function renderVocab() {
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+      const vocabGrid = document.getElementById("vocabGrid");
+
+      const allVocab = lessons.flatMap(lesson =>
+        lesson.vocab.map(item => ({ ...item, lessonTitle: lesson.subtitle }))
+      );
+
+      const filtered = allVocab.filter(item =>
+        item.arabic.includes(keyword) ||
+        item.latin.toLowerCase().includes(keyword) ||
+        item.meaning.toLowerCase().includes(keyword) ||
+        item.lessonTitle.toLowerCase().includes(keyword)
+      );
+
+      if (filtered.length === 0) {
+        vocabGrid.innerHTML = `<div class="card">Kosakata tidak ditemukan.</div>`;
+        return;
+      }
+
+      vocabGrid.innerHTML = filtered.map(item => `
+        <div class="vocab-card">
+          <p class="vocab-topic">${item.lessonTitle}</p>
+          <p class="vocab-arabic">${item.arabic}</p>
+          <p class="vocab-latin">/${item.latin}/</p>
+          <p class="vocab-meaning">${item.meaning}</p>
+          <button class="small-audio" onclick='pronounce(${JSON.stringify(item.arabic)})'>Dengarkan</button>
+        </div>
+      `).join("");
+    }
+
+    function renderSpeakingTasks() {
+      const container = document.getElementById("speakingTasks");
+      container.innerHTML = speakingTasks.map((task, index) => `
+        <div class="practice-item">
+          <strong>Latihan ${index + 1}</strong>
+          <p>${task}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderQuiz() {
+      const currentQuiz = quizBank[quizIndex];
+      const progress = Math.round((quizIndex / quizBank.length) * 100);
+
+      document.getElementById("quizContent").style.display = "block";
+      document.getElementById("resultScreen").style.display = "none";
+      document.getElementById("quizCount").textContent = `Soal ${quizIndex + 1} dari ${quizBank.length}`;
+      document.getElementById("scoreBadge").textContent = `Skor: ${score}`;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+      document.getElementById("questionBox").textContent = currentQuiz.question;
+      document.getElementById("feedback").classList.remove("show");
+
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = currentQuiz.options.map(option => `
+        <button class="option-btn" onclick='handleAnswer(${JSON.stringify(option)})'>${option}</button>
+      `).join("");
+    }
+
+    function handleAnswer(option) {
+      if (answered) return;
+      answered = true;
+      selectedAnswer = option;
+
+      const currentQuiz = quizBank[quizIndex];
+      const optionButtons = document.querySelectorAll(".option-btn");
+
+      optionButtons.forEach(button => {
+        if (button.textContent === currentQuiz.answer) {
+          button.classList.add("correct");
+        }
+        if (button.textContent === option && option !== currentQuiz.answer) {
+          button.classList.add("wrong");
+        }
+      });
+
+      if (option === currentQuiz.answer) {
+        score++;
+        document.getElementById("feedbackText").textContent = "Jawaban benar. Lanjutkan ke soal berikutnya.";
+      } else {
+        document.getElementById("feedbackText").textContent = `Jawaban belum tepat. Jawaban benar: ${currentQuiz.answer}`;
+      }
+
+      document.getElementById("scoreBadge").textContent = `Skor: ${score}`;
+      document.getElementById("progressBar").style.width = `${Math.round(((quizIndex + 1) / quizBank.length) * 100)}%`;
+
+      const nextButton = document.querySelector(".next-btn");
+      nextButton.textContent = quizIndex + 1 >= quizBank.length ? "Lihat Hasil" : "Soal Berikutnya";
+      document.getElementById("feedback").classList.add("show");
+    }
+
+    function nextQuestion() {
+      if (quizIndex + 1 >= quizBank.length) {
+        showResult();
+        return;
+      }
+
+      quizIndex++;
+      selectedAnswer = null;
+      answered = false;
+      renderQuiz();
+    }
+
+    function showResult() {
+      const finalScore = Math.round((score / quizBank.length) * 100);
+
+      document.getElementById("quizContent").style.display = "none";
+      document.getElementById("resultScreen").style.display = "block";
+      document.getElementById("resultSummary").textContent = `Anda menjawab ${score} dari ${quizBank.length} soal dengan benar.`;
+      document.getElementById("finalScore").textContent = finalScore;
+
+      let recommendation = "";
+      if (finalScore >= 80) {
+        recommendation = "Pemahaman sudah baik. Lanjutkan ke latihan berbicara dan menulis paragraf pendek.";
+      } else if (finalScore >= 60) {
+        recommendation = "Pemahaman cukup. Ulangi mufradat dan contoh kalimat pada materi yang belum dikuasai.";
+      } else {
+        recommendation = "Perlu penguatan. Pelajari ulang materi dasar, terutama arti mufradat dan pola kalimat sederhana.";
+      }
+
+      document.getElementById("recommendation").textContent = recommendation;
+    }
+
+    function resetQuiz() {
+      quizIndex = 0;
+      selectedAnswer = null;
+      score = 0;
+      answered = false;
+      renderQuiz();
+    }
+
+    renderLessons();
+    renderVocab();
+    renderSpeakingTasks();
+    renderQuiz();
+  </script>
+</body>
+</html>
